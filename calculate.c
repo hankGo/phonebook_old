@@ -3,6 +3,9 @@
 
 int main(void)
 {
+
+    /* read the output of orig and declare some variables*/
+
     FILE *fp = fopen("orig.txt", "r");
     FILE *output = fopen("output.txt", "w");
     if (!fp) {
@@ -24,6 +27,8 @@ int main(void)
     }
     fclose(fp);
 
+    /* read the output of opt*/
+
     fp = fopen("opt.txt", "r");
     if (!fp) {
         fp = fopen("orig.txt", "r");
@@ -43,6 +48,8 @@ int main(void)
         opt_sum_a += opt_a;
         opt_sum_f += opt_f;
     }
+
+    /* read the output of opt_hash*/
 
     fp = fopen("opt_hash.txt", "r");
     if (!fp) {
@@ -64,6 +71,7 @@ int main(void)
         opt_hash_sum_f += opt_hash_f;
     }
 
+    /* calculate the result */
     fprintf(output, "append() %lf %lf %lf\n",orig_sum_a / 100.0, opt_sum_a / 100.0, opt_hash_sum_a / 100.0);
     fprintf(output, "findName() %lf %lf %lf", orig_sum_f / 100.0, opt_sum_f / 100.0, opt_hash_sum_f / 100.0);
     fclose(output);
