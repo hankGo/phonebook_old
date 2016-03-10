@@ -80,11 +80,15 @@ int main(int argc, char *argv[])
     cpu_time2 = diff_in_second(start, end);
 
     FILE *output;
-#if defined(OPT)
+
+#if OPT==1
     output = fopen("opt.txt", "a");
+#elif OPT==2
+    output = fopen("opt_hash.txt", "a");
 #else
     output = fopen("orig.txt", "a");
 #endif
+
     fprintf(output, "append() findName() %lf %lf\n", cpu_time1, cpu_time2);
     fclose(output);
 
